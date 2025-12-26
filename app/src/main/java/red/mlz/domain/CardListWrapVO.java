@@ -1,4 +1,4 @@
-package red.mlz.domain.VO;
+package red.mlz.domain;
 
 import java.util.List;
 

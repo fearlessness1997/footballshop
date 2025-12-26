@@ -43,11 +43,6 @@
             <artifactId>junit-jupiter-api</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>red.mlz</groupId>
-            <artifactId>query-app</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
     </dependencies>
 
 </project>

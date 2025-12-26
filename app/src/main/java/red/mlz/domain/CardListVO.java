@@ -1,9 +1,9 @@
-package red.mlz.domain.VO;
+package red.mlz.domain;
 
 public class CardListVO {
     private String wallImage;
     private String name;
-    private Integer price;
+    private Float price;
     private Integer cardId;
 
     public Integer getCardId() {
@@ -30,11 +30,11 @@ public class CardListVO {
         this.name = name;
     }
 
-    public Integer getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 }

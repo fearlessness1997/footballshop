@@ -1,15 +1,11 @@
 package red.mlz.service;
 
-import io.micrometer.common.util.StringUtils;
-import red.mlz.entity.Card;
-import red.mlz.domain.DTO.CardDTO;
-import red.mlz.domain.VO.CardListVO;
-import red.mlz.domain.VO.CardVO;
-import red.mlz.mapper.CardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import red.mlz.entity.Card;
+import red.mlz.entity.DTO.CardDTO;
+import red.mlz.mapper.CardMapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,47 +14,21 @@ public class CardService {
     @Autowired
     private CardMapper cardMapper;
 
-    public List<CardListVO> getCardList() {
-        List<Card> cardLists = cardMapper.getList();
-        List<CardListVO> result = new ArrayList<>();
-        for (Card card:cardLists){
-            CardListVO vo = new CardListVO();
-            vo.setCardId(card.getId());
-
-            String coverImagesStr = card.getCardImages();
-            String wallImageStr="";
-            if (coverImagesStr!=null && !coverImagesStr.trim().isEmpty()) {
-                wallImageStr = coverImagesStr.split("\\$")[0];
-            }
-            vo.setWallImage(wallImageStr);
-
-            vo.setName(card.getName());
-            vo.setPrice(card.getPrice());
-            result.add(vo);
-        }
-        return result;
+    public List<Card> getCardList() {
+        return cardMapper.getList();
     }
 
-    public CardVO getCard(Integer id) {
-         Card info = cardMapper.getInfo(id);
-
-         CardVO cardVO =new CardVO();
-         cardVO.setName(info.getName());
-         cardVO.setPrice(info.getPrice());
-         cardVO.setIntroduction(info.getIntroduction());
-
-         String coverImagesStr = info.getCardImages();
-         cardVO.setCoverImages(List.of(StringUtils.isNotBlank(coverImagesStr) ? coverImagesStr.split("\\$") : new String[0]));
-         return cardVO;
+    public Card getCard(Integer id) {
+        return cardMapper.getInfo(id);
     }
 
-    public int insert(Card card) {
+    public int insert(String coverImages, String name, Float price, String introduction) {
         CardDTO cardDTO = new CardDTO();
-        cardDTO.setCoverImages(card.getCardImages());
-        cardDTO.setName(card.getName());
-        cardDTO.setPrice(card.getPrice());
-        cardDTO.setIntroduction(card.getIntroduction());
-        long mills = System.currentTimeMillis();
+        cardDTO.setCoverImages(coverImages);
+        cardDTO.setName(name);
+        cardDTO.setPrice(price);
+        cardDTO.setIntroduction(introduction);
+        long mills = System.currentTimeMillis() / 1000;
         cardDTO.setCreateTime(mills);
         cardDTO.setUpdateTime(mills);
         return cardMapper.insert(cardDTO);
@@ -68,10 +38,10 @@ public class CardService {
         return cardMapper.delete(id);
     }
 
-    public int update(Integer id,String coverImages, String name, Float price, String introduction) {
-        long mills = System.currentTimeMillis();
+    public int update(Integer id, String coverImages, String name, Float price, String introduction) {
+        long mills = System.currentTimeMillis() / 1000;
         long updateTime = mills;
-        return cardMapper.update(id,coverImages,name,price,introduction,updateTime);
+        return cardMapper.update(id, coverImages, name, price, introduction, updateTime);
     }
 }
 

@@ -1,11 +1,11 @@
-package red.mlz.domain.VO;
+package red.mlz.domain;
 
 import java.util.List;
 
 public class CardVO {
     private List<String> coverImages;
     private String name;
-    private Integer price;
+    private Float price;
     private String introduction;
 
     public List<String> getCoverImages() {
@@ -24,11 +24,11 @@ public class CardVO {
         this.name = name;
     }
 
-    public Integer getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 

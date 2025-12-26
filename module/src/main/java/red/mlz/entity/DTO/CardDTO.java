@@ -1,9 +1,9 @@
-package red.mlz.domain.DTO;
+package red.mlz.entity.DTO;
 
 public class CardDTO {
     private String coverImages;
     private String name;
-    private Integer price;
+    private Float price;
     private String introduction;
     private Long createTime;
     private Long updateTime;
@@ -25,11 +25,11 @@ public class CardDTO {
         this.name = name;
     }
 
-    public Integer getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 

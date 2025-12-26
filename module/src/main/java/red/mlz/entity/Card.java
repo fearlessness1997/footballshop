@@ -2,18 +2,10 @@ package red.mlz.entity;
 
 public class Card {
     private Integer id;
-    private String cardImages;
+    private String coverImages;
     private String name;
-    private Integer price;
+    private Float price;
     private String introduction;
-
-    public String getCardImages() {
-        return cardImages;
-    }
-
-    public void setCardImages(String cardImages) {
-        this.cardImages = cardImages;
-    }
 
     public Integer getId() {
         return id;
@@ -23,6 +15,13 @@ public class Card {
         this.id = id;
     }
 
+    public String getCoverImages() {
+        return coverImages;
+    }
+
+    public void setCoverImages(String coverImages) {
+        this.coverImages = coverImages;
+    }
 
     public String getName() {
         return name;
@@ -32,11 +31,11 @@ public class Card {
         this.name = name;
     }
 
-    public Integer getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 

@@ -1,10 +1,10 @@
 package red.mlz.entity;
 
 public class CardList {
-   private Integer id;
-   private String wallImage;
-   private String name;
-   private Integer price;
+    private Integer id;
+    private String wallImage;
+    private String name;
+    private Float price;
 
 
     public String getWallImage() {
@@ -23,13 +23,14 @@ public class CardList {
         this.name = name;
     }
 
-    public Integer getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
+
 
     public Integer getId() {
         return id;
