@@ -12,19 +12,19 @@ public interface CardMapper {
     List<Card> getList();
 
     @Select("select * from card where id=#{id}")
-    Card getInfo(@Param("id")Integer id);
+    Card getInfo(@Param("id") Integer id);
 
     @Insert("insert into card () values (coverImages,name,price,introduction,create_time,update_time)" +
             "(#{cardDTO.coverImages},#{cardDTO.name},#{cardDTO.price},#{cardDTO.introduction},#{cardDTO.createTime},#{cardDTO.updateTime})")
     int insert(@Param("info") CardDTO cardDTO);
 
     @Update("update card set is_deleted=1 where id=#{id}")
-    int delete(@Param("id")Integer id);
+    int delete(@Param("id") Integer id);
 
     @Update("update card set cover_images=#{coverImages},name=#{name}," +
             "price=#{price},introduction=#{introduction},update_time=#{updateTime} where id=#{id} ")
-    int update(@Param("id") Integer id,@Param("coverImages") String coverImages,
-                @Param("name")String name, @Param("price")Float price,
-               @Param("introduction")String introduction,
-               @Param("updateTime")Long updateTime);
+    int update(@Param("id") Integer id, @Param("coverImages") String coverImages,
+               @Param("name") String name, @Param("price") Float price,
+               @Param("introduction") String introduction,
+               @Param("updateTime") Long updateTime);
 }

@@ -18,16 +18,17 @@ public class ListController {
 
     @Autowired
     private CardService cardService;
-    @Autowired private DataSource dataSource;
+    @Autowired
+    private DataSource dataSource;
 
     @RequestMapping("/card/list")
-    public CardListWrapVO cardList(){
-        List<CardListVO> List =  cardService.getCardList();
+    public CardListWrapVO cardList() {
+        List<CardListVO> List = cardService.getCardList();
         return new CardListWrapVO(List);
     }
 
     @RequestMapping("/card/info")
-    public CardVO cardInfo(@RequestParam(name="cardId") Integer id){
+    public CardVO cardInfo(@RequestParam(name = "cardId") Integer id) {
         return cardService.getCard(id);
     }
 

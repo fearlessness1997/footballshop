@@ -21,13 +21,13 @@ public class CardService {
     public List<CardListVO> getCardList() {
         List<Card> cardLists = cardMapper.getList();
         List<CardListVO> result = new ArrayList<>();
-        for (Card card:cardLists){
+        for (Card card : cardLists) {
             CardListVO vo = new CardListVO();
             vo.setCardId(card.getId());
 
             String coverImagesStr = card.getCardImages();
-            String wallImageStr="";
-            if (coverImagesStr!=null && !coverImagesStr.trim().isEmpty()) {
+            String wallImageStr = "";
+            if (coverImagesStr != null && !coverImagesStr.trim().isEmpty()) {
                 wallImageStr = coverImagesStr.split("\\$")[0];
             }
             vo.setWallImage(wallImageStr);
@@ -40,16 +40,16 @@ public class CardService {
     }
 
     public CardVO getCard(Integer id) {
-         Card info = cardMapper.getInfo(id);
+        Card info = cardMapper.getInfo(id);
 
-         CardVO cardVO =new CardVO();
-         cardVO.setName(info.getName());
-         cardVO.setPrice(info.getPrice());
-         cardVO.setIntroduction(info.getIntroduction());
+        CardVO cardVO = new CardVO();
+        cardVO.setName(info.getName());
+        cardVO.setPrice(info.getPrice());
+        cardVO.setIntroduction(info.getIntroduction());
 
-         String coverImagesStr = info.getCardImages();
-         cardVO.setCoverImages(List.of(StringUtils.isNotBlank(coverImagesStr) ? coverImagesStr.split("\\$") : new String[0]));
-         return cardVO;
+        String coverImagesStr = info.getCardImages();
+        cardVO.setCoverImages(List.of(StringUtils.isNotBlank(coverImagesStr) ? coverImagesStr.split("\\$") : new String[0]));
+        return cardVO;
     }
 
     public int insert(Card card) {
@@ -68,10 +68,10 @@ public class CardService {
         return cardMapper.delete(id);
     }
 
-    public int update(Integer id,String coverImages, String name, Float price, String introduction) {
+    public int update(Integer id, String coverImages, String name, Float price, String introduction) {
         long mills = System.currentTimeMillis();
         long updateTime = mills;
-        return cardMapper.update(id,coverImages,name,price,introduction,updateTime);
+        return cardMapper.update(id, coverImages, name, price, introduction, updateTime);
     }
 }
 
