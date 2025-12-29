@@ -22,7 +22,7 @@ public class CardService {
         return cardMapper.getInfo(id);
     }
 
-    public int insert(String coverImages, String name, Float price, String introduction) {
+    public String insert(String coverImages, String name, Float price, String introduction) {
         CardDTO cardDTO = new CardDTO();
         cardDTO.setCoverImages(coverImages);
         cardDTO.setName(name);
@@ -31,7 +31,19 @@ public class CardService {
         long mills = System.currentTimeMillis() / 1000;
         cardDTO.setCreateTime(mills);
         cardDTO.setUpdateTime(mills);
-        return cardMapper.insert(cardDTO);
+
+      try{
+        int rows = cardMapper.insert(cardDTO);
+        if(rows>0){
+            Long generatedId = cardDTO.getId();
+            return "自增ID是:"+generatedId;
+        }else {
+            return "失败";
+        }
+       }catch (Exception e){
+             e.printStackTrace();
+             return "失败";
+         }
     }
 
     public int delete(Integer id) {

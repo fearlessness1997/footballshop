@@ -17,8 +17,8 @@ public class CardInfoController {
                                    @RequestParam(name = "name") String name,
                                    @RequestParam(name = "price") Float price,
                                    @RequestParam(name = "introduction") String introduction) {
-        int result = cardService.insert(coverImages, name, price, introduction);
-        return result == 1 ? "成功" : "失败";
+        return cardService.insert(coverImages, name, price, introduction);
+
     }
 
     @RequestMapping("/card/delete")

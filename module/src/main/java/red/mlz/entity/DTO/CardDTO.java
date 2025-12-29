@@ -1,6 +1,7 @@
 package red.mlz.entity.DTO;
 
 public class CardDTO {
+    private Long id;
     private String coverImages;
     private String name;
     private Float price;
@@ -8,6 +9,14 @@ public class CardDTO {
     private Long createTime;
     private Long updateTime;
     private int isDeleted;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getCoverImages() {
         return coverImages;
