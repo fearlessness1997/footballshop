@@ -1,4 +1,4 @@
-package red.mlz;
+package red.mlz.controller;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

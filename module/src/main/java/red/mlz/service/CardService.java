@@ -67,4 +67,8 @@ public class CardService {
         cardWithCount.setTotal(total);
         return cardWithCount;
     }
+
+    public Card getAdminCard(Integer id) {
+        return cardMapper.getInfo(id);
+    }
 }

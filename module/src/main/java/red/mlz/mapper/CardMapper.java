@@ -8,15 +8,15 @@ import java.util.List;
 @Mapper
 public interface CardMapper {
 
-    @Select("select id,cover_images ,name,price from card")
+    @Select("SELECT id,cover_images ,name,price FROM card")
     List<Card> getList();
 
-    @Select("select * from card where id=#{id}")
+    @Select("SELECT * FROM card WHERE id=#{id}")
     Card getInfo(@Param("id") Integer id);
 
     int insert(@Param("card") Card card);
 
-    @Update("update card set is_deleted=1 where id=#{id}")
+    @Update("update card SET is_deleted=1 WHERE id=#{id}")
     int delete(@Param("id") Integer id);
 
     int update(@Param("id") Integer id, @Param("coverImages") String coverImages,
@@ -24,9 +24,13 @@ public interface CardMapper {
                @Param("introduction") String introduction,
                @Param("updateTime") Long updateTime);
 
-    @Select("select * from card limit #{pageSize} OFFSET #{offset}")
+    @Select("SELECT * FROM card LIMIT #{pageSize} OFFSET #{offset}")
     List<Card> getPageList(@Param("offset") int offset, @Param("pageSize") Integer pageSize);
 
-    @Select("select count(*) from card")
+    @Select("SELECT COUNT(*) FROM card")
     Long getTotal();
+
+    @Select("SELECT cover_images,name,price,introduction,FROM_UNIXTIME(create_time) AS createTime," +
+            "FROM_UNIXTIME(update_time) AS updateTime FROM card;")
+    Card getAdminCard(Integer id);
 }

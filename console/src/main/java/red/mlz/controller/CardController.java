@@ -1,15 +1,20 @@
 package red.mlz.controller;
 
+import io.micrometer.common.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import red.mlz.domain.AdminCardInfoVO;
 import red.mlz.domain.AdminCardListVO;
 import red.mlz.domain.AdminCardListWrapVO;
 import red.mlz.entity.Card;
 import red.mlz.entity.CardWithCount;
 import red.mlz.service.CardService;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,4 +78,29 @@ public class CardController {
 
         return vo;
     }
+
+    @RequestMapping("/card/admininfo")
+    public AdminCardInfoVO adminCardInfoVO(@RequestParam("cardId") Integer id){
+        Card info = cardService.getAdminCard(id);
+
+        AdminCardInfoVO cardVO = new AdminCardInfoVO();
+        cardVO.setName(info.getName());
+        cardVO.setPrice(info.getPrice());
+        cardVO.setIntroduction(info.getIntroduction());
+        String coverImagesStr = info.getCoverImages();
+        cardVO.setCoverImages(List.of(StringUtils.isNotBlank(coverImagesStr) ? coverImagesStr.split("\\$") : new String[0]));
+        // 关键转换
+        cardVO.setCreateTime(timestampToLocalDateTime(info.getCreateTime()));
+        cardVO.setUpdateTime(timestampToLocalDateTime(info.getUpdateTime()));
+
+        return cardVO;
+    }
+    private LocalDateTime timestampToLocalDateTime(Long timestamp) {
+        if (timestamp == null) return null;
+        return LocalDateTime.ofInstant(
+                Instant.ofEpochSecond(timestamp),  // 数据库int存的是秒级时间戳
+                ZoneId.systemDefault()
+        );
+    }
+
 }
