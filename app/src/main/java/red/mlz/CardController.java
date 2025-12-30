@@ -1,4 +1,4 @@
-package red.mlz.controller;
+package red.mlz;
 
 import io.micrometer.common.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class ListController {
+public class CardController {
 
     @Autowired
     private CardService cardService;
-    @Autowired
-    private DataSource dataSource;
 
     @RequestMapping("/card/list")
     public CardListWrapVO cardList() {
@@ -59,26 +57,3 @@ public class ListController {
     }
 
 }
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
