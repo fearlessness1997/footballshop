@@ -3,7 +3,7 @@
 <mapper namespace="red.mlz.mapper.CardMapper">
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
         insert into card (cover_images,name,price,introduction,create_time,update_time) VALUES
-        (#{cardDTO.coverImages},#{cardDTO.name},#{cardDTO.price},#{cardDTO.introduction},#{cardDTO.createTime},#{cardDTO.updateTime})
+        (#{card.coverImages},#{card.name},#{card.price},#{card.introduction},#{card.createTime},#{card.updateTime})
     </insert>
 
     <update id="update">

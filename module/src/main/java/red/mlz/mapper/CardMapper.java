@@ -14,7 +14,7 @@ public interface CardMapper {
     @Select("select * from card where id=#{id}")
     Card getInfo(@Param("id") Integer id);
 
-    int insert(@Param("Card") Card card);
+    int insert(@Param("card") Card card);
 
     @Update("update card set is_deleted=1 where id=#{id}")
     int delete(@Param("id") Integer id);
