@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import red.mlz.domain.AdminCardInfoVO;
-import red.mlz.domain.AdminCardListVO;
+import red.mlz.domain.AdminCardList;
 import red.mlz.domain.AdminCardListWrapVO;
 import red.mlz.entity.Card;
 import red.mlz.entity.CardWithCount;
@@ -56,9 +56,9 @@ public class CardController {
         CardWithCount cardWithCount = cardService.getAdminCardList(page,pageSize);
         List<Card> cardLists =cardWithCount.getList();
 
-        List<AdminCardListVO> result = new ArrayList<>();
+        List<AdminCardList> result = new ArrayList<>();
         for (Card card : cardLists) {
-            AdminCardListVO vo = new AdminCardListVO();
+            AdminCardList vo = new AdminCardList();
             vo.setCardId(card.getId());
             String coverImagesStr = card.getCoverImages();
             String wallImageStr = "";

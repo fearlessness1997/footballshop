@@ -6,7 +6,7 @@ import java.util.List;
 
 @Data
 public class AdminCardListWrapVO {
-    private List<AdminCardListVO> list;
+    private List<AdminCardList> list;
     private Long total;
     private Integer pageSize;
 }

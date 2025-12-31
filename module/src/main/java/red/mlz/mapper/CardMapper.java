@@ -16,7 +16,7 @@ public interface CardMapper {
 
     int insert(@Param("card") Card card);
 
-    @Update("update card SET is_deleted=1 WHERE id=#{id}")
+    @Update("UPDATE card SET is_deleted=1 WHERE id=#{id}")
     int delete(@Param("id") Integer id);
 
     int update(@Param("id") Integer id, @Param("coverImages") String coverImages,
@@ -29,8 +29,4 @@ public interface CardMapper {
 
     @Select("SELECT COUNT(*) FROM card")
     Long getTotal();
-
-    @Select("SELECT cover_images,name,price,introduction,FROM_UNIXTIME(create_time) AS createTime," +
-            "FROM_UNIXTIME(update_time) AS updateTime FROM card;")
-    Card getAdminCard(Integer id);
 }
