@@ -9,11 +9,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>red.mlz</groupId>
-    <artifactId>footballcard</artifactId>
+    <artifactId>footballshop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>zuoye3</name>
-    <description>zuoye3</description>
+    <name>shop1</name>
+    <description>shop1</description>
 
     <modules>
         <module>app</module>

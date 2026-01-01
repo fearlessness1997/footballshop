@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>red.mlz</groupId>
-        <artifactId>footballcard</artifactId>
+        <artifactId>footballshop</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>update-console</artifactId>
+    <artifactId>console</artifactId>
 
     <properties>
         <start-class>com.mlz.query.UpdateApplication</start-class>

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import red.mlz.domain.CardListVO;
+import red.mlz.domain.CardList;
 import red.mlz.domain.CardListWrapVO;
 import red.mlz.domain.CardVO;
 import red.mlz.entity.Card;
@@ -24,9 +24,9 @@ public class CardController {
     public CardListWrapVO cardList() {
         List<Card> cardLists = cardService.getCardList();
 
-        List<CardListVO> result = new ArrayList<>();
+        List<CardList> result = new ArrayList<>();
         for (Card card : cardLists) {
-            CardListVO vo = new CardListVO();
+            CardList vo = new CardList();
             vo.setCardId(card.getId());
             String coverImagesStr = card.getCoverImages();
             String wallImageStr = "";

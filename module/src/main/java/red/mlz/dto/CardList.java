@@ -1,4 +1,4 @@
-package red.mlz.entity;
+package red.mlz.dto;
 
 import lombok.Data;
 

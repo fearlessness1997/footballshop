@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import red.mlz.entity.Card;
-import red.mlz.entity.CardWithCount;
+import red.mlz.dto.CardWithCount;
 import red.mlz.mapper.CardMapper;
 
 import java.util.List;
@@ -37,7 +37,7 @@ public class CardService {
         try {
             int rows = cardMapper.insert(card);
             if (rows > 0) {
-                Integer generatedId = card.getId();
+                Long generatedId = card.getId();
                 return "自增ID是:" + generatedId;
             } else {
                 return "失败";

@@ -2,8 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="red.mlz.mapper.CardMapper">
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
-        insert into card (cover_images,name,price,introduction,create_time,update_time) VALUES
-        (#{card.coverImages},#{card.name},#{card.price},#{card.introduction},#{card.createTime},#{card.updateTime})
+        INSERT INTO card
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="card.coverImages != null">cover_images,</if>
+            <if test="card.name != null">name,</if>
+            <if test="card.price != null">price,</if>
+            <if test="card.introduction != null">introduction,</if>
+            <if test="card.createTime != null">create_time,</if>
+            <if test="card.updateTime != null">update_time,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="card.coverImages != null">#{card.coverImages},</if>
+            <if test="card.name != null">#{card.name},</if>
+            <if test="card.price != null">#{card.price},</if>
+            <if test="card.introduction != null">#{card.introduction},</if>
+            <if test="card.createTime != null">#{card.createTime},</if>
+            <if test="card.updateTime != null">#{card.updateTime},</if>
+        </trim>
     </insert>
 
     <update id="update">

@@ -9,7 +9,7 @@ import red.mlz.domain.AdminCardInfoVO;
 import red.mlz.domain.AdminCardList;
 import red.mlz.domain.AdminCardListWrapVO;
 import red.mlz.entity.Card;
-import red.mlz.entity.CardWithCount;
+import red.mlz.dto.CardWithCount;
 import red.mlz.service.CardService;
 
 import java.time.Instant;
@@ -102,5 +102,4 @@ public class CardController {
                 ZoneId.systemDefault()
         );
     }
-
 }

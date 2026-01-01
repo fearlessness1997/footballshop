@@ -1,4 +1,4 @@
-package red.mlz.controller;
+package red.mlz;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = "red.mlz")
 @MapperScan("red.mlz.mapper")
-public class FootballApplication {
+public class AppApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FootballApplication.class, args);
+        SpringApplication.run(AppApplication.class, args);
     }
 
 }

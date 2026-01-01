@@ -3,9 +3,9 @@ package red.mlz.domain;
 import lombok.Data;
 
 @Data
-public class CardListVO {
+public class CardList {
     private String wallImage;
     private String name;
     private Float price;
-    private Integer cardId;
+    private Long cardId;
 }

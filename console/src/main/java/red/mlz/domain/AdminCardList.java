@@ -7,5 +7,5 @@ public class AdminCardList {
     private String wallImage;
     private String name;
     private Float price;
-    private Integer cardId;
+    private Long cardId;
 }

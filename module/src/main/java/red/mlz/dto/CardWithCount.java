@@ -1,6 +1,7 @@
-package red.mlz.entity;
+package red.mlz.dto;
 
 import lombok.Data;
+import red.mlz.entity.Card;
 
 import java.util.List;
 

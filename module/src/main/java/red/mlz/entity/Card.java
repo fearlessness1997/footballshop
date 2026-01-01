@@ -4,12 +4,12 @@ import lombok.Data;
 
 @Data
 public class Card {
-    private Integer id;
+    private Long id;
     private String coverImages;
     private String name;
     private Float price;
     private String introduction;
     private Long createTime;
     private Long updateTime;
-    private int isDeleted;
+    private Integer isDeleted;
 }
